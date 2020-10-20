@@ -1,0 +1,20 @@
+<h3>Editing</h3>
+<%= form_for :user, url: user_path(@user), method: :patch do |f| %>
+  <%# if @post.errors.any? %>
+    <%# @post.errors.full_messages.each do |msg| %>
+<!--    <div class="alert alert-danger"><%#= msg %></div>-->
+<!--    <%# end %>>-->
+<!--  <%# end %>> -->
+
+  <p>
+    First name <br>
+    <%= f.text_field(:first_name, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Last name <br>
+    <%= f.text_field(:last_name, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.submit({:class => 'btn btn-success'}) %>
+  </p>
+<% end %>
