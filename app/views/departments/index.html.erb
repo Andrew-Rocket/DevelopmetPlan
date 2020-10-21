@@ -1,0 +1,4 @@
+<% @departments.each do |dep| %>
+  <h3><%= dep.title %></h3>
+  <%= link_to 'Department', department_path(dep), class: 'btn btn-default' %>
+<% end %>

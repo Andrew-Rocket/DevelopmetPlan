@@ -1,9 +1,8 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   before_action :authenticate_user!
 
 
   def edit
-    #@user = Post.find(params[:id])
     @user = current_user
   end
 
@@ -18,7 +17,7 @@ class UserController < ApplicationController
   end
 
   def show
-
+    #TODO
   end
 
   private def user_params

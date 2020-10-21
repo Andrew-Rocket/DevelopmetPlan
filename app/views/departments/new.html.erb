@@ -1,0 +1,9 @@
+<%= form_for :department, url: departments_path do |f| %>
+  <p>
+    Title <br>
+    <%= f.text_field(:title, class: 'form-control') %>
+  </p>
+  <p>
+    <%= f.submit(class: 'btn btn-success') %>
+  </p>
+<% end %>

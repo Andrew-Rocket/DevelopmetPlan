@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_203024) do
+ActiveRecord::Schema.define(version: 2020_10_21_111208) do
+
+  create_table "departments", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", default: "", null: false
@@ -24,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_203024) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "role"
     t.integer "level"
+    t.integer "department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
