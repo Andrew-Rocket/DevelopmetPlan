@@ -1,4 +1,6 @@
 class DepartmentsController < ApplicationController
+  before_action :authorize_record, except: [:show, :index]
+
 
   def show
     @department = Department.find(params[:id])
@@ -9,13 +11,11 @@ class DepartmentsController < ApplicationController
   end
 
   def new
-    authorize @department
-
     @department = Department.new
-
   end
 
   def create
+
     @department = Department.new(dep_params)
 
     if @department.save
@@ -45,7 +45,14 @@ class DepartmentsController < ApplicationController
     redirect_to departments_path
   end
 
-  private def dep_params
+  private
+
+  def dep_params
     params.require(:department).permit(:title)
   end
+
+  def authorize_record
+    authorize Department.new
+  end
+
 end

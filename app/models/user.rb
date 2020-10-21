@@ -18,7 +18,7 @@ class User < ApplicationRecord
       senior: 10
   }
 
-  # validates :last_name, presence: true
+  validates :last_name, presence: true
 
   belongs_to :department
 
