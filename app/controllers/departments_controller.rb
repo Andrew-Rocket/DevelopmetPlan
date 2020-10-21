@@ -1,5 +1,4 @@
 class DepartmentsController < ApplicationController
-  before_action :authenticate_user!
 
   def show
     @department = Department.find(params[:id])
@@ -7,12 +6,13 @@ class DepartmentsController < ApplicationController
 
   def index
     @departments = Department.all
-    'index'
   end
 
   def new
+    authorize @department
+
     @department = Department.new
-    'new'
+
   end
 
   def create

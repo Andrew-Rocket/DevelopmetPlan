@@ -1,0 +1,4 @@
+class DepartmentPolicy < ApplicationPolicy
+
+
+end
