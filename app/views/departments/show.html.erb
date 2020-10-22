@@ -1,6 +1,9 @@
-<div style="background-color: red">
-<%=@department.title %>
-<%=link_to 'Delete', department_path(@department), method: :delete%>
-<%=link_to 'Edit', edit_department_path(@department)%>
-<%= image_tag(@department.cover_img, {class: 'rounded', style: 'height: 250px; width: 250px'}) %>
-</div>
+<%= @department.title %>
+<%= link_to 'Delete', department_path(@department), method: :delete %>
+<%= link_to 'Edit', edit_department_path(@department) %>
+
+<% if @user.avatar.attached? %>
+
+  <%= image_tag(@department.cover_img, {class: 'rounded', style: 'height: 250px; width: 250px'}) %>
+
+<% end %>
