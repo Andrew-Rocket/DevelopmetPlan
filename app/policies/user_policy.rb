@@ -12,6 +12,6 @@ class UserPolicy < ApplicationPolicy
     ( user.admin? || user.member? ) && user == record
   end
 
-  alias edit? update?
+  alias update? edit?
 
 end
