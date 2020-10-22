@@ -1,8 +1,9 @@
 class DepartmentsController < ApplicationController
   before_action :authorize_record
+  before_action :find_dep, only: [:show, :edit, :update, :destroy]
 
   def show
-    @department = Department.find(params[:id])
+    #  @department = Department.find(params[:id])
   end
 
   def index
@@ -15,7 +16,7 @@ class DepartmentsController < ApplicationController
 
   def create
 
-    @department = Department.new(dep_params)
+      @department = Department.new(dep_params)
 
     if @department.save
       redirect_to @department
@@ -25,11 +26,11 @@ class DepartmentsController < ApplicationController
   end
 
   def edit
-    @department = Department.find(params[:id])
+    #   @department = Department.find(params[:id])
   end
 
   def update
-    @department = Department.find(params[:id])
+    #  @department = Department.find(params[:id])
 
     if @department.update(dep_params)
       redirect_to @department
@@ -39,7 +40,7 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    @department = Department.find(params[:id])
+    #   @department = Department.find(params[:id])
     @department.destroy
     redirect_to departments_path
   end
@@ -52,6 +53,10 @@ class DepartmentsController < ApplicationController
 
   def authorize_record
     authorize Department.new
+  end
+
+  def find_dep
+    @department = Department.find(params[:id])
   end
 
 end
