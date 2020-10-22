@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  belongs_to :plan
+  belongs_to :flow_step
 
   enum level: {
       trainee: 0,

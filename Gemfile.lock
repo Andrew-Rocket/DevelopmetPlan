@@ -81,6 +81,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_invitable (2.0.2)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
     erubi (1.9.0)
     ffi (1.13.1)
     ffi (1.13.1-x64-mingw32)
@@ -228,6 +231,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise (>= 4.7.3)
+  devise_invitable (~> 2.0.0)
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (~> 1.2, >= 1.2.3)
