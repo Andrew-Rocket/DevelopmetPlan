@@ -1,0 +1,6 @@
+<% @plans.each do |plan| %>
+  <div>
+    <h3><%= plan.title %></h3>
+    <%= link_to 'Open', plan_path(plan) %>
+  </div>
+<% end %>

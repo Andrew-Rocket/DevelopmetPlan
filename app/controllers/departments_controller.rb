@@ -48,7 +48,7 @@ class DepartmentsController < ApplicationController
   private
 
   def dep_params
-    params.require(:department).permit(:title)
+    params.require(:department).permit(:title, :cover_img)
   end
 
   def authorize_record
