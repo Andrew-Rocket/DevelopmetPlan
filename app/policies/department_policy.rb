@@ -1,27 +1,23 @@
 class DepartmentPolicy < ApplicationPolicy
   def index?
-    user.admin?
+    user.admin? || user.member?
   end
 
   def show?
+    user.admin? || user.member?
+  end
+
+  def create?
     user.admin?
   end
 
-  def new?
-    user.admin?
-  end
-
-  alias create? new?
+  alias new? create?
 
   def edit?
     user.admin?
   end
 
-  alias edit? update?
-
-  def update?
-    user.admin?
-  end
+  alias update? edit?
 
   def destroy?
     user.admin? && record.users.none?

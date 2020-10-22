@@ -1,11 +1,22 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+
+
   def index
     @users = User.all
+
+    authorize @user
+  end
+
+  def show
+    @user = User.find(params[:id])
+
+    authorize @user
   end
 
   def edit
     @user = current_user
+
+    authorize @user
   end
 
   def update
@@ -16,10 +27,8 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end
 
-  def show
-    @user = User.find(params[:id])
+    authorize @user
   end
 
   private def user_params

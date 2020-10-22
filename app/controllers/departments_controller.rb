@@ -1,6 +1,5 @@
 class DepartmentsController < ApplicationController
-  before_action :authorize_record, except: [:show, :index]
-
+  before_action :authorize_record
 
   def show
     @department = Department.find(params[:id])
