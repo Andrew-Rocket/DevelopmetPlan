@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def update
 
-    if (@user.update(user_params))
+    if @user.update(user_params)
       redirect_to @user
     else
       render 'edit'
@@ -42,15 +42,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :department_id, :email)
+    params.require(:user).permit(:first_name, :last_name, :department_id, :email, :avatar)
   end
 
   def get_current_user
-    @user = Department.find(params[:id])
+    @user = User.find(params[:id])
   end
 
 
   def authorize_current_user
-    @user = Department.find(params[:id])
+    @user = User.find(params[:id])
   end
 end

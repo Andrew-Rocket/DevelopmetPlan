@@ -10,6 +10,11 @@
     <%= f.text_field(:last_name, class: 'form-control') %>
   </p>
   <p>
+    Avatar<br>
+    <%= f.file_field(:avatar) %>
+  </p>
+
+  <p>
     <%= f.submit(class: 'btn btn-success') %>
   </p>
 <% end %>
