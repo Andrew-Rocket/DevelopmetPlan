@@ -1,24 +1,28 @@
 <h1>Home</h1>
 
-<% if user_signed_in? %>
+<div>
+  <% if user_signed_in? %>
 
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
 
-  <%= link_to 'Add dep', new_department_path %>
+    <%= link_to 'Edit myself', 'users/edit' %>
+    <div>
+      <% if current_user.admin? %>
 
-  <%= link_to 'Add plan', new_plan_path %>
+        <%= link_to 'Add dep', new_department_path %>
 
-  <%= link_to 'Invite user', new_user_path %>
+        <%= link_to 'Add plan', new_plan_path %>
 
+        <%= link_to 'Invite user', new_user_path %>
 
-  <%= link_to 'Edit myself', 'users/edit' %>
+      <% end %>
+    </div>
 
+  <% else %>
 
+    <%= link_to 'Sign up', new_user_registration_path %>
 
-<% else %>
+    <%= link_to 'Sign in', new_user_session_path %>
 
-  <%= link_to 'Sign up', new_user_registration_path %>
-
-  <%= link_to 'Sign in', new_user_session_path %>
-
-<% end %>
+  <% end %>
+</div>
