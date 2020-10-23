@@ -9,7 +9,11 @@
   </p>
   <p>
     Dep_id <br>
-    <%= f.text_field(:department_id, class: 'form-control') %>
+    <%= select_tag :department_id, options_for_select(Department.all) %>
+  </p>
+  <p>
+    Level <br>
+    <%= select_tag :level, options_for_select(User.levels) %>
   </p>
   <p>
     Email <br>

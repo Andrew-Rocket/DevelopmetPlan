@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :department_id, :email, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :department_id, :level, :email, :avatar)
   end
 
   def get_current_user
@@ -51,6 +51,6 @@ class UsersController < ApplicationController
 
 
   def authorize_current_user
-    @user = User.find(params[:id])
+    @user = User  .find(params[:id])
   end
 end
