@@ -24,13 +24,25 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
 
+  def invite
+    if User.invite!(user_params)
+      redirect_to root_path
+    else
+      render 'new'
+    end
+    
+  end
+
+  def new
+    @user = User.new
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name)
+    params.require(:user).permit(:first_name, :last_name, :department_id, :email)
   end
 
   def get_current_user

@@ -14,4 +14,10 @@ class UserPolicy < ApplicationPolicy
 
   alias update? edit?
 
+  def new?
+    user.admin?
+  end
+
+  alias invite? new?
+
 end
