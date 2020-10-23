@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      render 'edit'
+      render 'edit'gem 'wdm', '>= 0.1.0'  
     end
   end
 
