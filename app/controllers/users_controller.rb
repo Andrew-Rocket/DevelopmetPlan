@@ -51,6 +51,6 @@ class UsersController < ApplicationController
 
 
   def authorize_current_user
-    @user = User  .find(params[:id])
+    @user = User.find(params[:id])
   end
 end

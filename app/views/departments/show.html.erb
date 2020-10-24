@@ -7,3 +7,11 @@
   <%= image_tag(@department.cover_img, {class: 'rounded', style: 'height: 250px; width: 250px'}) %>
 
 <% end %>
+
+<%= link_to 'Add plan', new_department_plan_path(@department.id) %>
+
+<% @department.plans.each do |plan| %>
+  <div class="alert alert-light">
+    <p><strong><%= plan.title %></strong></p>
+  </div>
+<% end %>

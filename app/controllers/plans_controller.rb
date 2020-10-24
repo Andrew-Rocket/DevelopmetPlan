@@ -15,11 +15,10 @@ class PlansController < ApplicationController
   end
 
   def create
+    @department = Department.find(params[:department_id])
 
-    @plan = Plan.new(plan_params)
-
-    if @plan.save
-      redirect_to @plan
+    if (@plan = @department.plans.create(plan_params))
+      redirect_to @department
     else
       render 'new'
     end
