@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :users
 
   resources :departments do
-    resources :plans
+    resources :plans do
+      resources :flow_steps do
+        resources :tasks
+      end
+    end
   end
 
   post 'users/invite', to: 'users#invite', as: 'user_invite'
