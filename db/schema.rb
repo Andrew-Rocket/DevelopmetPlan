@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_212916) do
+ActiveRecord::Schema.define(version: 2020_10_25_180939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 2020_10_22_212916) do
     t.string "title"
     t.text "description"
     t.integer "level"
-    t.bigint "plan_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["plan_id"], name: "index_tasks_on_plan_id"
+    t.bigint "flow_step_id", null: false
+    t.index ["flow_step_id"], name: "index_tasks_on_flow_step_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,6 +97,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_212916) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "flow_steps", "plans"
   add_foreign_key "plans", "departments"
-  add_foreign_key "tasks", "plans"
+  add_foreign_key "tasks", "flow_steps"
   add_foreign_key "users", "departments"
 end

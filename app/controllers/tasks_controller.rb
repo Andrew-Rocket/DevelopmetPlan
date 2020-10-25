@@ -9,25 +9,29 @@ class TasksController < ApplicationController
   end
 
   def create
+
     @flow_step = FlowStep.find(params[:flow_step_id])
 
-    if @flow_step.tasks.create(task_params);
-      #redirect_to @plan
+    if @flow_step.tasks.create(task_params)
+       # redirect_to @plan
     else
       #render @plan
     end
   end
 
-  # def update
-  #   #  @department = Department.find(params[:id])
-  #
-  #   if @department.update(dep_params)
-  #     redirect_to @department
-  #   else
-  #     render 'edit'
-  #   end
-  # end
-  #
+  def edit
+
+  end
+
+  def update
+
+    if @task.update(task_params)
+      #redirect_to
+    else
+      #render 'edit'
+    end
+  end
+
   # def destroy
   #   #   @department = Department.find(params[:id])
   #   @department.destroy
@@ -37,7 +41,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description)
+    params.require(:task).permit(:title, :description, :level, :flow_step_id)
   end
 
   def authorize_record

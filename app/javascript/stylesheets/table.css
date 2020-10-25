@@ -23,17 +23,17 @@ Flexbox is used as a fallback so that browsers which don't support grid will sti
 
 /* Lists */
 
-.lists-container::-webkit-scrollbar {
+#plan .lists-container::-webkit-scrollbar {
     height: 2.4rem;
 }
 
-.lists-container::-webkit-scrollbar-thumb {
+#plan .lists-container::-webkit-scrollbar-thumb {
     background-color: #66a3c7;
     border: 0.8rem solid #0079bf;
     border-top-width: 0;
 }
 
-.lists-container {
+#plan .lists-container {
     display: flex;
     align-items: start;
     padding: 0 0.8rem 0.8rem;
@@ -41,7 +41,7 @@ Flexbox is used as a fallback so that browsers which don't support grid will sti
     height: calc(100vh - 8.6rem);
 }
 
-.list {
+#plan .list {
     flex: 0 0 27rem;
     display: flex;
     flex-direction: column;
@@ -51,18 +51,18 @@ Flexbox is used as a fallback so that browsers which don't support grid will sti
     margin-right: 1rem;
 }
 
-.list:last-of-type {
+#plan .list:last-of-type {
     margin-right: 0;
 }
 
-.list-title {
+#plan .list-title {
     font-size: 1.4rem;
     font-weight: 700;
     color: #333;
     padding: 1rem;
 }
 
-.list-items {
+#plan .list-items {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -71,16 +71,16 @@ Flexbox is used as a fallback so that browsers which don't support grid will sti
     overflow-y: auto;
 }
 
-.list-items::-webkit-scrollbar {
+#plan .list-items::-webkit-scrollbar {
     width: 1.6rem;
 }
 
-.list-items::-webkit-scrollbar-thumb {
+#plan .list-items::-webkit-scrollbar-thumb {
     background-color: #c4c9cc;
     border-right: 0.6rem solid #e2e4e6;
 }
 
-.list-items li {
+#plan .list-items li {
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 1.3;
@@ -94,15 +94,15 @@ Flexbox is used as a fallback so that browsers which don't support grid will sti
     cursor: pointer;
 }
 
-.list-items li:last-of-type {
+#plan .list-items li:last-of-type {
     margin-bottom: 0;
 }
 
-.list-items li:hover {
+#plan .list-items li:hover {
     background-color: #eee;
 }
 
-.add-card-btn {
+#plan .add-card-btn {
     display: block;
     font-size: 1.4rem;
     font-weight: 400;
@@ -112,13 +112,13 @@ Flexbox is used as a fallback so that browsers which don't support grid will sti
     cursor: pointer;
 }
 
-.add-card-btn:hover {
+#plan .add-card-btn:hover {
     background-color: #cdd2d4;
     color: #4d4d4d;
     text-decoration: underline;
 }
 
-.add-list-btn {
+#plan .add-list-btn {
     flex: 0 0 27rem;
     display: block;
     font-size: 1.4rem;
@@ -132,12 +132,12 @@ Flexbox is used as a fallback so that browsers which don't support grid will sti
     text-align: left;
 }
 
-.add-list-btn:hover {
+#plan .add-list-btn:hover {
     background-color: #005485;
 }
 
-.add-card-btn::after,
-.add-list-btn::after {
+#plan .add-card-btn::after,
+#plan .add-list-btn::after {
     content: '...';
 }
 
@@ -150,60 +150,60 @@ Remove or comment-out the code block below to see how the browser will fall-back
 */
 
 @supports (display: grid) {
-    body {
+   #plan body {
         display: grid;
         grid-template-rows: 4rem 3rem auto;
         grid-row-gap: 0.8rem;
     }
 
-    .masthead {
+    #plan .masthead {
         display: grid;
         grid-template-columns: auto 1fr auto;
         grid-column-gap: 2rem;
     }
 
-    .boards-menu {
+    #plan .boards-menu {
         display: grid;
         grid-template-columns: 9rem 18rem;
         grid-column-gap: 0.8rem;
     }
 
-    .user-settings {
+    #plan .user-settings {
         display: grid;
         grid-template-columns: repeat(4, auto);
         grid-column-gap: 0.8rem;
     }
 
-    .board-controls {
+    #plan .board-controls {
         display: grid;
         grid-auto-flow: column;
         grid-column-gap: 1rem;
     }
 
-    .lists-container {
+    #plan .lists-container {
         display: grid;
         grid-auto-columns: 27rem;
         grid-auto-flow: column;
         grid-column-gap: 1rem;
     }
 
-    .list {
+    #plan .list {
         display: grid;
         grid-template-rows: auto minmax(auto, 1fr) auto;
     }
 
-    .list-items {
+    #plan .list-items {
         display: grid;
         grid-row-gap: 0.6rem;
     }
 
-    .logo,
-    .list,
-    .list-items li,
-    .boards-btn,
-    .board-info-bar,
-    .board-controls .btn,
-    .user-settings-btn {
+    #plan .logo,
+    #plan .list,
+    #plan .list-items li,
+    #plan .boards-btn,
+    #plan .board-info-bar,
+    #plan .board-controls .btn,
+    #plan .user-settings-btn {
         margin: 0;
     }
 }

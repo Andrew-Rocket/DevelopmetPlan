@@ -5,4 +5,11 @@ class TaskPolicy < ApplicationPolicy
   end
 
   alias new? create?
+
+  def update?
+    user.admin?
+  end
+
+  alias edit? update?
+
 end

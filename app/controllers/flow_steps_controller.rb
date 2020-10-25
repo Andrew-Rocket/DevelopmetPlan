@@ -6,7 +6,7 @@ class FlowStepsController < ApplicationController
     # @flow_step = FlowStep.new(flow_step_params)
     @plan = Plan.find(params[:plan_id])
 
-    if @plan.flow_steps.create(flow_step_params);
+    if @plan.flow_steps.create(flow_step_params)
       #redirect_to @plan
     else
       #render @plan

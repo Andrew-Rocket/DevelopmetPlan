@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<h3>Editing</h3>
+<%= form_for :task, url: department_plan_flow_step_task_path, method: :put do |f| %>
 
-</body>
-</html>
+<p>
+    Title <br>
+    <%= f.text_field(:title, class: 'form-control') %>
+</p>
+<p>
+    Desc <br>
+    <%= f.text_field(:description, class: 'form-control') %>
+</p>
+<p>
+    flow_step_id <br>
+    <%= f.text_field(:flow_step_id, class: 'form-control') %>
+</p>
+<p>
+    Level <br>
+    <%= select_tag :level, options_for_select(Task.levels) %>
+</p>
+<p>
+    <%= f.submit(class: 'btn btn-success') %>
+</p>
+<% end %>
