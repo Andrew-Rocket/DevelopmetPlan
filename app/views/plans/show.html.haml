@@ -1,0 +1,22 @@
+= @plan.title
+= form_for(:flow_step, url: department_plan_flow_steps_path(plan_id: @plan.id)) do |f|
+  %p
+    = f.label(:title)
+    = f.text_field(:title, {:class => 'form-control'})
+  %p
+    = f.submit("Add flow step", {:class => 'btn btn-success'})
+#plan
+  %section.lists-container
+    - @plan.flow_steps.each do |fs|
+      .list
+        %h3.list-title= fs.title
+        %ul.list-items
+          - fs.tasks.each do |task|
+            - if current_user.level == task.level || current_user.admin?
+              %li= task.title
+        = form_for(:task, url: department_plan_flow_step_tasks_url(flow_step_id: fs.id, plan_id: @plan.id)) do |f|
+          %p
+            = f.text_field(:title, {:class => 'form-control'})
+          %p
+            = f.submit("Add task", {:class => 'add-card-btn btn'})
+    %button.add-list-btn.btn Add a list

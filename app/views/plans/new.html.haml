@@ -1,0 +1,10 @@
+= form_for :plan, url: department_plans_path(params[:department_id]) do |f|
+  %p
+    Title
+    %br/
+    = f.text_field(:title, class: 'form-control')
+  / <p>
+  / Dep id <br>
+  / </p>
+  %p
+    = f.submit(class: 'btn btn-success')

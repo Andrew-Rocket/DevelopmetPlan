@@ -1,0 +1,8 @@
+%h3 Editing
+= form_for :plan, url: plan_path(@plan), method: :put do |f|
+  %p
+    First name
+    %br/
+    = f.text_field(:title, class: 'form-control')
+  %p
+    = f.submit(class: 'btn btn-success')

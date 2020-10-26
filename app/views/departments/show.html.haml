@@ -1,0 +1,11 @@
+= @department.title
+- if @department.cover_img.attached?
+  = image_tag(@department.cover_img, {class: 'rounded', style: 'height: 250px; width: 250px'})
+= link_to 'Add plan', new_department_plan_path(@department.id)
+- @department.plans.each do |plan|
+  .alert.alert-light
+    %strong= plan.title
+    %br/
+    = link_to 'Open', department_plan_path(plan), :class => 'btn btn-primary'
+    = button_to 'Delete', department_plan_path(plan), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
+    = link_to 'Edit', edit_department_plan_path(plan), :class => 'btn btn-warning'

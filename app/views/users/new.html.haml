@@ -1,0 +1,23 @@
+= form_for :user, url: user_invite_path, method: :post do |f|
+  %p
+    First name
+    %br/
+    = f.text_field(:first_name, class: 'form-control')
+  %p
+    Last name
+    %br/
+    = f.text_field(:last_name, class: 'form-control')
+  %p
+    Dep_id
+    %br/
+    = select_tag :department_id, options_for_select(Department.all)
+  %p
+    Level
+    %br/
+    = select_tag :level, options_for_select(User.levels)
+  %p
+    Email
+    %br/
+    = f.text_field(:email, class: 'form-control')
+  %p
+    = f.submit(class: 'btn btn-success')

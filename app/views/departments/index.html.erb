@@ -1,9 +1,0 @@
-<% @departments.each do |dep| %>
-  <div>
-      <%= dep.title %> <br/>
-      <%= link_to 'Open', department_path(dep), :class => 'btn btn-primary' %>
-      <%= button_to 'Delete', department_path(dep), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger' %>
-      <%= link_to 'Edit', edit_department_path(dep), :class => 'btn btn-warning' %>
-    </h3>
-  </div>
-<% end %>

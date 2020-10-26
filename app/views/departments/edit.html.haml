@@ -1,0 +1,12 @@
+%h3 Editing
+= form_for :department, url: department_path(@department), method: :put do |f|
+  %p
+    First name
+    %br/
+    = f.text_field(:title, class: 'form-control')
+  %p
+    Cover img
+    %br/
+    = f.file_field(:cover_img)
+  %p
+    = f.submit(class: 'btn btn-success')

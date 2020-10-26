@@ -1,0 +1,4 @@
+- @plans.each do |plan|
+  %div
+    %h3= plan.title
+    = link_to 'Open', plan_path(plan)
