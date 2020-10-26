@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :flow_step
 
+  has_rich_text :description
+
   enum level: {
       trainee: 0,
       junior: 1,
