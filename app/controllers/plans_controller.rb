@@ -40,7 +40,7 @@ class PlansController < ApplicationController
 
   def destroy
     @plan.destroy
-    redirect_to plans_path
+    puts('asdsa')
   end
 
   private

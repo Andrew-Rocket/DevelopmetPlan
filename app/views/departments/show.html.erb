@@ -1,6 +1,4 @@
 <%= @department.title %>
-<%= link_to 'Delete', department_path(@department), method: :delete %>
-<%= link_to 'Edit', edit_department_path(@department) %>
 
 <% if @department.cover_img.attached? %>
 
@@ -12,6 +10,12 @@
 
 <% @department.plans.each do |plan| %>
   <div class="alert alert-light">
-    <p><strong><%= plan.title %></strong></p>
+
+    <strong><%= plan.title %></strong><br/>
+    <%= link_to 'Open', department_plan_path(plan), :class => 'btn btn-primary' %>
+    <%= button_to 'Delete', department_plan_path(plan), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger' %>
+    <%= link_to 'Edit', edit_department_plan_path(plan), :class => 'btn btn-warning' %>
+
+
   </div>
 <% end %>
