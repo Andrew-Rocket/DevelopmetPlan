@@ -23,7 +23,9 @@
 
         <ul class="list-items">
           <% fs.tasks.each do |task| %>
-            <li><%= task.title %></li>
+            <% if current_user.level == task.level || current_user.admin? %>
+              <li><%= task.title %></li>
+            <% end %>
           <% end %>
         </ul>
 
