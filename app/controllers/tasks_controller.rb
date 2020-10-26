@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :level, :flow_step_id)
+    params.require(:task).permit(:title, :description, :level, :flow_step_id, :plan_id)
   end
 
   def authorize_record

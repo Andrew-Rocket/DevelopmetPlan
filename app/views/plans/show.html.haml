@@ -1,5 +1,5 @@
 = @plan.title
-= form_for(:flow_step, url: department_plan_flow_steps_path(plan_id: @plan.id)) do |f|
+= form_for(:flow_step, url: plan_flow_steps_path(plan_id: @plan.id)) do |f|
   %p
     = f.label(:title)
     = f.text_field(:title, {:class => 'form-control'})
@@ -14,7 +14,7 @@
           - fs.tasks.each do |task|
             - if current_user.level == task.level || current_user.admin?
               %li= task.title
-        = form_for(:task, url: department_plan_flow_step_tasks_url(flow_step_id: fs.id, plan_id: @plan.id)) do |f|
+        = form_for(:task, url: flow_step_tasks_path(flow_step_id: fs.id, plan_id: @plan.id), method: :post) do |f|
           %p
             = f.text_field(:title, {:class => 'form-control'})
           %p

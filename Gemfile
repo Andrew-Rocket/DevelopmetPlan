@@ -64,3 +64,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 gem 'rubocop', '~> 1.0', require: false
+
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'shoulda-matchers', '~> 4.0'
+  gem 'factory_bot', '~> 6.1.0'
+end
+
