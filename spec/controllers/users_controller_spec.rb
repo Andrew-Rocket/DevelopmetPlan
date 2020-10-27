@@ -9,19 +9,43 @@ describe UsersController, type: :controller do
   describe '#index' do
     let!(:user) { create :user }
     subject { get :index }
+
     it 'returns all users' do
       subject
       expect(assigns(:users)).to eq(User.all)
     end
+
+    it 'renders index' do
+      subject
+      expect(response).to render_template(:index)
+    end
+
+    it 'returns status 200' do
+      subject
+      expect(response).to have_http_status(200)
+    end
+
   end
 
   describe '#new' do
     let!(:user) { create :user }
     subject { get :new }
-    it 'returns all users' do
+
+    it 'returns new user' do
       subject
       expect(assigns(:user)).to be_a_new(User)
     end
+
+    it 'renders new' do
+      subject
+      expect(response).to render_template(:new)
+    end
+
+    it 'returns status 200' do
+      subject
+      expect(response).to have_http_status(200)
+    end
+
   end
 end
 
