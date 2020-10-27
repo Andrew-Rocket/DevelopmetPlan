@@ -65,6 +65,8 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 gem 'rubocop', '~> 1.0', require: false
 
+gem 'rails-controller-testing'
+
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
   gem 'shoulda-matchers', '~> 4.0'
