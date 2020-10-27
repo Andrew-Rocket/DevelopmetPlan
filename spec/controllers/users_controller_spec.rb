@@ -14,6 +14,15 @@ describe UsersController, type: :controller do
       expect(assigns(:users)).to eq(User.all)
     end
   end
+
+  describe '#new' do
+    let!(:user) { create :user }
+    subject { get :new }
+    it 'returns all users' do
+      subject
+      expect(assigns(:user)).to be_a_new(User)
+    end
+  end
 end
 
 
