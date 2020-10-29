@@ -11,12 +11,13 @@
   / </div>
   = @task.description
   %p
-    flow_step_id
-    %br/
+    = f.label :flow_step_id
     = f.text_field(:flow_step_id, class: 'form-control')
   %p
-    Level
-    %br/
-    = select_tag :level, options_for_select(Task.levels)
+    f.label :level
+    = f.select :level, User.levels.keys, {}, {class: 'form-control'}
   %p
     = f.submit(class: 'btn btn-success')
+
+- @task.comments.each do |c|
+  = c.title

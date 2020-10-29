@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_163646) do
+ActiveRecord::Schema.define(version: 2020_10_29_210242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,9 @@ ActiveRecord::Schema.define(version: 2020_10_29_163646) do
     t.text "body", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -72,6 +75,16 @@ ActiveRecord::Schema.define(version: 2020_10_29_163646) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_plans_on_department_id"
+  end
+
+  create_table "task_states", force: :cascade do |t|
+    t.integer "state", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.bigint "task_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_task_states_on_task_id"
+    t.index ["user_id"], name: "index_task_states_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -113,6 +126,8 @@ ActiveRecord::Schema.define(version: 2020_10_29_163646) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "flow_steps", "plans"
   add_foreign_key "plans", "departments"
+  add_foreign_key "task_states", "tasks"
+  add_foreign_key "task_states", "users"
   add_foreign_key "tasks", "flow_steps"
   add_foreign_key "users", "departments"
 end
