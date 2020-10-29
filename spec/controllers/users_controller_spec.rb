@@ -65,44 +65,6 @@ describe UsersController, type: :controller do
       expect(assigns(:user)).to eq(User.first)
     end
   end
-
-  describe '#invite' do
-
-    let(:params) do
-      {user: {first_name: 'test', last_name: 'test', email: 'lol', level: :middle, department_id: 1}}
-    end
-
-    # before(:each) do
-    #   {method: :post, action: :invite, params: {user: User.new(params)}}
-    # end
-
-
-    it 'creates a new user' do
-      expect {
-        post :invite, params: params
-      }.to change(User, :count).by(1)
-    end
-
-    # and / or
-    #
-    # it 'assigns a new Post' do
-    #   post :create, valid_params
-    #   assigns(:post).should be_a(Post)
-    #   assigns(:post).should be_persisted
-    # end
-
-    #=
-    # it 'returns invited user' do
-    #   expect(assigns(:user)).to be(User.first.update(response.params))
-    # end
-    #
-    # it 'renders show' do
-    #   expect(response).to render_template(:index)
-    # end
-    #
-    # it 'returns status 200' do
-    #   expect(response).to have_http_status(200)
-    # end
-  end
 end
+
 
