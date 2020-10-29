@@ -8,218 +8,101 @@ describe UsersController, type: :controller do
 
   describe '#index' do
     let!(:user) { create :user }
-    subject { get :index }
+
+    before(:each) do
+      get :index
+    end
 
     it 'returns all users' do
-      subject
       expect(assigns(:users)).to eq(User.all)
     end
 
     it 'renders index' do
-      subject
       expect(response).to render_template(:index)
     end
 
     it 'returns status 200' do
-      subject
       expect(response).to have_http_status(200)
     end
 
   end
 
   describe '#new' do
-    let!(:user) { create :user }
-    subject { get :new }
+
+    before(:each) do
+      get :new
+    end
 
     it 'returns new user' do
-      subject
       expect(assigns(:user)).to be_a_new(User)
     end
 
     it 'renders new' do
-      subject
       expect(response).to render_template(:new)
     end
 
     it 'returns status 200' do
-      subject
       expect(response).to have_http_status(200)
     end
 
   end
+
+  describe '#show' do
+
+    before(:each) do
+      get :show, params: {id: User.first.id}
+    end
+
+    it 'returns status 200' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders show' do
+      expect(response).to render_template(:show)
+    end
+
+    it 'returns user object' do
+      expect(assigns(:user)).to eq(User.first)
+    end
+  end
+
+  describe '#invite' do
+
+    let(:params) do
+      {user: {first_name: 'test', last_name: 'test', email: 'lol', level: :middle, department_id: 1}}
+    end
+
+    # before(:each) do
+    #   {method: :post, action: :invite, params: {user: User.new(params)}}
+    # end
+
+
+    it 'creates a new user' do
+      expect {
+        post :invite, params: params
+      }.to change(User, :count).by(1)
+    end
+
+    # and / or
+    #
+    # it 'assigns a new Post' do
+    #   post :create, valid_params
+    #   assigns(:post).should be_a(Post)
+    #   assigns(:post).should be_persisted
+    # end
+
+    #=
+    # it 'returns invited user' do
+    #   expect(assigns(:user)).to be(User.first.update(response.params))
+    # end
+    #
+    # it 'renders show' do
+    #   expect(response).to render_template(:index)
+    # end
+    #
+    # it 'returns status 200' do
+    #   expect(response).to have_http_status(200)
+    # end
+  end
 end
 
-
-# require 'rails_helper'
-#
-# RSpec.describe UsersController, type: :controller do
-#
-#   describe 'before actions' do
-#     describe 'load_user' do
-#       it 'is expected to define before action' do
-#         is_expected.to use_before_action(:load_user)
-#       end
-#     end
-#   end
-#
-#   # index action
-#   describe 'GET #index' do
-#     before do
-#       get :index
-#     end
-#
-#     it 'is expected to assign user instance variable' do
-#       expect(assigns[:users]).to eq(User.all)
-#     end
-#   endx
-#
-#   # new action
-#   describe 'GET #new' do
-#     before do
-#       get :new
-#     end
-#
-#     it 'is expected to assign user as new instance variable' do
-#       expect(assigns[:user]).to be_instance_of(User)
-#     end
-#
-#     it 'renders new template' do
-#       is_expected.to render_template(:new)
-#     end
-#
-#     it 'renders application layout' do
-#       is_expected.to render_template(:application)
-#     end
-#   end
-#
-#   # create action
-#   describe 'POST #create' do
-#     before do
-#       post :create, params: params
-#     end
-#
-#     context 'when params are correct' do
-#       let(:params) { { user: { first_name: "Test" } } }
-#
-#       it 'is expected to create new user successfully' do
-#         expect(assigns[:user]).to be_instance_of(User)
-#       end
-#
-#       it 'is expected to have name assigned to it' do
-#         expect(assigns[:user].first_name).to eq('Test')
-#       end
-#
-#       it 'is expected to redirect to users path' do
-#         is_expected.to redirect_to users_path
-#       end
-#
-#       it 'is expected to set flash message' do
-#         expect(flash[:notice]).to eq('User Created Successfully.')
-#       end
-#     end
-#
-#     context 'when params are not correct' do
-#       let(:params) { { user: { name: '' } } }
-#
-#       it 'is expected to render new template' do
-#         is_expected.to render_template(:new)
-#       end
-#
-#       it 'is expected to add errors to name attribute' do
-#         expect(assigns[:user].errors[:name]).to eq(['can\'t be blank'])
-#       end
-#     end
-#   end
-#
-#   # edit action
-#   describe 'GET #edit' do
-#     before do
-#       # something that you want to execute before running `it` block
-#       get :edit, params: params
-#     end
-#
-#     context 'when user id is valid' do
-#       let(:user) { FactoryBot.create :user }
-#       let(:params) { { id: user.id } }
-#
-#       it 'is expected to set user instance variable' do
-#         expect(assigns[:user]).to eq(User.find_by(id: params[:id]))
-#       end
-#
-#       it 'is expected to render edit template' do
-#         is_expected.to render_template(:edit)
-#       end
-#     end
-#
-#     context 'when user id is invalid' do
-#       let(:params) { { id: Faker::Number.number } }
-#
-#       it 'is expected to redirect_to users path' do
-#         is_expected.to redirect_to(users_path)
-#       end
-#
-#       it 'is expected to set flash' do
-#         expect(flash[:notice]).to eq('User not found.')
-#       end
-#     end
-#
-#   end
-#
-#   # update action
-#   describe 'PATCH #update' do
-#
-#     before do
-#       # something that you want to execute before running `it` block
-#       patch :update, params: params
-#     end
-#
-#     context 'when user not found' do
-#       let(:params) { { id: Faker::Number.number } }
-#
-#       it 'is expected to redirect_to users path' do
-#         is_expected.to redirect_to(users_path)
-#       end
-#
-#       it 'is expected to set flash' do
-#         expect(flash[:notice]).to eq('User not found.')
-#       end
-#     end
-#
-#     context 'when user exist in database' do
-#       let(:user) { FactoryBot.create :user }
-#       let(:params) { { id: user.id, user: { name: 'test name' } } }
-#
-#       context 'when data is provided is valid' do
-#         it 'is expected to update user' do
-#           expect(user.reload.name).to eq('test name')
-#         end
-#
-#         it 'is_expected to redirect_to users_path' do
-#           is_expected.to redirect_to(users_path)
-#         end
-#
-#         it 'is expected to set flash message' do
-#           expect(flash[:notice]).to eq('User has been updated Successfully.')
-#         end
-#       end
-#
-#       context 'when data is invalid' do
-#         let(:user) { FactoryBot.create :user }
-#         let(:params) { { id: user.id, user: { name: '' } } }
-#
-#         it 'is expected not to update user name' do
-#           expect(user.reload.name).not_to be_empty
-#         end
-#
-#         it 'is expected to render edit template' do
-#           expect(response).to render_template(:edit)
-#         end
-#
-#         it 'is expected to add errors to user name attribute' do
-#           expect(assigns[:user].errors[:name]).to eq(['can\'t be blank'])
-#         end
-#       end
-#     end
-#   end
-#
-# end

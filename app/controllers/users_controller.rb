@@ -13,22 +13,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit
-
-  end
-
-  def update
-
-    if @user.update(user_params)
-      redirect_to @user
-    else
-      render 'edit'
-    end
-  end
-
   def invite
     if User.invite!(user_params)
-      redirect_to root_path
+      redirect_to users_path
     else
       render 'new'
     end
