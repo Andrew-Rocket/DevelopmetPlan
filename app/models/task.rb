@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :flow_step
+  has_many :comments, as: :commentable
 
   has_rich_text :description
 
