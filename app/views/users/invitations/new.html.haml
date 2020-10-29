@@ -1,0 +1,24 @@
+%h2= t "devise.invitations.new.header"
+= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  - resource.class.invite_key_fields.each do |field|
+    .field
+      = f.label :first_name
+      = f.text_field(:first_name, class: 'form-control')
+    .field
+      = f.label :last_name
+      = f.text_field(:last_name, class: 'form-control')
+    .field
+      = f.label :email
+      = f.text_field(:email, class: 'form-control')
+    .field
+      = f.label :department_id
+      %br
+      = f.select :department_id, Department.all.collect { |d| [d.title, d.id]}, {}, class: 'form-control'
+    .field
+      = f.label :level
+      %br
+      = f.select :level, User.levels.keys, {}, {class: 'form-control'}
+  .actions
+    %br
+    = f.submit("Send invite", class: 'btn btn-success')

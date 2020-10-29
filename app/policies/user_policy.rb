@@ -20,4 +20,5 @@ class UserPolicy < ApplicationPolicy
 
   alias invite? new?
 
+
 end

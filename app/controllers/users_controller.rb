@@ -13,19 +13,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def invite
-    if User.invite!(user_params)
-      redirect_to users_path
-    else
-      render 'new'
-    end
-
-  end
-
-  def new
-    @user = User.new
-  end
-
   private
 
   def user_params
