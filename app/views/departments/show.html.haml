@@ -1,11 +1,14 @@
-= @department.title
-- if @department.cover_img.attached?
-  = image_tag(@department.cover_img, {class: 'rounded', style: 'height: 250px; width: 250px'})
-= link_to 'Add plan', new_department_plan_path(@department.id)
+%div{:style => "text-align: center;"}
+  %h2= @department.title
+  = link_to 'Add plan', new_department_plan_path(@department.id), class: 'btn btn-primary'
+
 - @department.plans.each do |plan|
-  .alert.alert-light
+  .alert.alert-light{:style => "text-align: center;"}
     %strong= plan.title
-    %br/
-    = link_to 'Open', department_plan_path(plan), :class => 'btn btn-primary'
-    = button_to 'Delete', department_plan_path(plan), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
-    = link_to 'Edit', edit_department_plan_path(plan), :class => 'btn btn-warning'
+    .outer
+      .inner
+        = link_to 'Open', department_plan_path(plan), :class => 'btn btn-primary'
+      .inner
+        = button_to 'Delete', department_plan_path(plan), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
+      .inner
+        = link_to 'Edit', edit_department_plan_path(plan), :class => 'btn btn-warning'

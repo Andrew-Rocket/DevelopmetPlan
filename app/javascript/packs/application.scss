@@ -1,5 +1,23 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "../stylesheets/table";
-@import "trix/dist/trix";
 @import "../stylesheets/actiontext";
 // never forget the semicolon at the end
+
+body {
+  background-color: mintcream;
+}
+
+.inline-block {
+  display: inline-block;
+  z-index: 100;
+}
+
+.outer
+{
+  width:100%;
+  text-align: center;
+}
+.inner
+{
+  display: inline-block;
+}

@@ -1,7 +1,15 @@
 - @departments.each do |dep|
-  %div
-    = dep.title
-    %br/
-    = link_to 'Open', department_path(dep), :class => 'btn btn-primary'
-    = button_to 'Delete', department_path(dep), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
-    = link_to 'Edit', edit_department_path(dep), :class => 'btn btn-warning'
+  .card{:style => "width: 18rem;"}
+    - if dep.cover_img.attached?
+      = image_tag(dep.cover_img, class: 'card-img-top', alt: 'Cover img')
+    .card-body{:style => 'text-align: center;'}
+      %h5.card-title
+        = dep.title
+      .outer
+        %div.inner
+          = link_to 'Open', department_path(dep), :class => 'btn btn-primary'
+        %div.inner
+          = button_to 'Delete', department_path(dep), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
+        %div.inner
+          = link_to 'Edit', edit_department_path(dep), :class => 'btn btn-warning'
+

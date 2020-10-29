@@ -9,5 +9,6 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render('layouts/parts/navbar')
-    = yield
+    .container
+      = yield
     = render('layouts/parts/flash')
