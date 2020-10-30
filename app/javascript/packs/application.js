@@ -25,9 +25,9 @@ require("@rails/actiontext")
 import 'bootstrap'
 import "../stylesheets/application.scss"
 
-var jQuery = require('jquery')
-global.$ = global.jQuery = jQuery;
-window.$ = window.jQuery = jQuery;
+// var jQuery = require('jquery')
+// global.$ = global.jQuery = jQuery;
+// window.$ = window.jQuery = jQuery;
 
 
 

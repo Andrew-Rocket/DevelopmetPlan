@@ -43,6 +43,13 @@ class PlansController < ApplicationController
     puts('asdsa')
   end
 
+  def export_as_pdf
+    respond_to do |format|
+      format.html { redirect_to @user, notice: 'User was successfully created.' }
+      format.json { render json: @user, status: :created, location: @user }
+    end
+  end
+
   private
 
   def plan_params

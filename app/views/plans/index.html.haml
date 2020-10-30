@@ -2,3 +2,4 @@
   %div
     %h3= plan.title
     = link_to 'Open', plan_path(plan)
+    = link_to "Get PDF", plan_path(plan, format: :pdf), class: "btn btn-primary"

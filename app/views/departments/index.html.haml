@@ -1,7 +1,6 @@
 - @departments.each do |dep|
   .card{:style => "width: 18rem;"}
-    - if dep.cover_img.attached?
-      = image_tag(dep.cover_img, class: 'card-img-top', alt: 'Cover img')
+    = image_tag(dep.cover_img, class: 'card-img-top', alt: 'Cover img') if dep.cover_img.attached?
     .card-body{:style => 'text-align: center;'}
       %h5.card-title
         = dep.title
