@@ -12,4 +12,13 @@ class TaskPolicy < ApplicationPolicy
 
   alias edit? update?
 
+  def show?
+    true
+  end
+
+
+  def destroy?
+    user.admin?
+  end
+
 end

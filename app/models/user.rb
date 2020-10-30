@@ -22,6 +22,8 @@ class User < ApplicationRecord
 
   belongs_to :department
 
+  has_many :task_states
+
   has_one_attached :avatar
 
   scope :with_first_name, -> { where.not(first_name: [nil, '']) }

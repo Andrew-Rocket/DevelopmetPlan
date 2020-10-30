@@ -9,7 +9,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    ( user.admin? || user.member? ) && user == record
+    true
   end
 
   alias update? edit?
@@ -18,7 +18,7 @@ class UserPolicy < ApplicationPolicy
     user.admin?
   end
 
-  alias invite? new?
+  alias create? new?
 
 
 end

@@ -7,17 +7,15 @@
   .field
     = f.label :description
     = f.rich_text_area(:description)
-  / <div class="field">
-  / </div>
-  = @task.description
   %p
     = f.label :flow_step_id
-    = f.text_field(:flow_step_id, class: 'form-control')
+    = f.select :flow_step_id, @task.flow_step.plan.flow_steps.collect { |flow| [flow.title, flow.id]}, {}, {class: 'form-control'}
   %p
-    f.label :level
+    = f.label :level
     = f.select :level, User.levels.keys, {}, {class: 'form-control'}
   %p
     = f.submit(class: 'btn btn-success')
+    = button_to 'Delete Task', task_path(@task), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
 
 - @task.comments.each do |c|
-  = c.title
+  = c.body

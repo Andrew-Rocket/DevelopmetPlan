@@ -1,8 +1,7 @@
 class TasksController < ApplicationController
 
-
   before_action :authorize_record
-  before_action :find_task, only: [ :edit, :update, :destroy]
+  before_action :find_task, only: [:edit, :update, :show, :destroy]
 
   def new
     @flow_step = FlowStep.new
@@ -13,30 +12,37 @@ class TasksController < ApplicationController
     @flow_step = FlowStep.find(params[:flow_step_id])
 
     if @flow_step.tasks.create(task_params)
-       # redirect_to @plan
+      redirect_to @flow_step.plan
     else
-      #render @plan
+      render 'new'
     end
   end
 
   def edit
-
+    @user = current_user
   end
 
   def update
 
     if @task.update(task_params)
-      #redirect_to
+      redirect_to @task
     else
-      #render 'edit'
+      render 'edit'
     end
   end
 
-  # def destroy
-  #   #   @department = Department.find(params[:id])
-  #   @department.destroy
-  #   redirect_to departments_path
-  # end
+  def show
+    if(@state = TaskState.where(user_id: current_user.id, task_id: @task.id).first)
+      @state
+    else
+      @state = TaskState.create(user_id: current_user.id, task_id: @task.id)
+    end
+  end
+
+  def destroy
+    redirect_to @task.flow_step.plan
+    @task.destroy
+  end
 
   private
 

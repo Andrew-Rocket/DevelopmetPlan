@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   resources :tasks
 
+  resources :tasks do
+    resources :task_states
+  end
+
   devise_for :users, controllers: { invitations: 'users/invitations' }
 
   resources :users
