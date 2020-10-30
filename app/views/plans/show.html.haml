@@ -25,3 +25,4 @@
           %p
             = f.submit("Add task", {:class => 'add-card-btn btn'})
     %button.add-list-btn.btn Add a list
+    = link_to "Get PDF", plan_pdf_path(@plan), class: "btn btn-primary"

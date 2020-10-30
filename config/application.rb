@@ -18,5 +18,6 @@ module DevelopmentPlan
 
     config.active_job.queue_adapter = :sidekiq
     config.autoloader = :classic
+    config.public_file_server.enabled
   end
 end

@@ -1,10 +1,12 @@
-%p= test
+%p
+  test
 %h1 Plan
 %ul
   %li
     ID: #{plan.id}
   %li
-    Title: #{Plan.title}
+    Title: #{plan.title}
     %br/
   %li
-    Flow count: #{Plan.flow_steps.count}
+    Flow count: #{plan.flow_steps.count}
+    %li{class: 'form-control'}

@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   before_action :authorize_record
-  before_action :find_plan, only: [:show, :edit, :update, :destroy]
+  before_action :find_plan, only: [:show, :edit, :update, :destroy, :export_as_pdf]
 
   def show
 
@@ -44,10 +44,8 @@ class PlansController < ApplicationController
   end
 
   def export_as_pdf
-    respond_to do |format|
-      format.html { redirect_to @user, notice: 'User was successfully created.' }
-      format.json { render json: @user, status: :created, location: @user }
-    end
+    ExportPlanJob.perform_later(current_user.email, @plan)
+    redirect_to @plan
   end
 
   private

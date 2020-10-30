@@ -22,4 +22,8 @@ class PlanPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def export_as_pdf?
+    user.admin?
+  end
 end

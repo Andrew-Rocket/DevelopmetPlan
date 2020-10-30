@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :plans
   end
 
+  get 'plans/:id/pdf', to: 'plans#export_as_pdf', as: 'plan_pdf'
+
   resources :plans do
     resources :flow_steps
   end
@@ -29,4 +31,3 @@ Rails.application.routes.draw do
 
   resources :users
 end
-
