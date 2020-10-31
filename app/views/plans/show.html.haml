@@ -5,6 +5,7 @@
       = f.text_field(:title, {:class => 'form-control'})
     %p
       = f.submit("Add flow step", {:class => 'btn btn-success'})
+      = link_to "Get PDF to email", plan_pdf_path(@plan), class: "btn btn-primary", data: {confirm: "Are you sure?"} if current_user.admin?
 #plan
   %section.lists-container
     - @plan.flow_steps.each do |fs|
@@ -24,5 +25,4 @@
             = f.text_field(:title, {:class => 'form-control'})
           %p
             = f.submit("Add task", {:class => 'add-card-btn btn'})
-    %button.add-list-btn.btn Add a list
-    = link_to "Get PDF", plan_pdf_path(@plan), class: "btn btn-primary"
+

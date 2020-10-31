@@ -1,12 +1,10 @@
-%p
-  test
-%h1 Plan
-%ul
-  %li
-    ID: #{plan.id}
-  %li
-    Title: #{plan.title}
-    %br/
-  %li
-    Flow count: #{plan.flow_steps.count}
-    %li{class: 'form-control'}
+%div{:style => "text-align: center;"}
+  %h2= plan.title
+#plan
+  %section.lists-container
+    - plan.flow_steps.each do |fs|
+      .list
+        %h3.list-title= fs.title
+        %ul.list-items
+          - fs.tasks.each do |task|
+            %li= task.title
