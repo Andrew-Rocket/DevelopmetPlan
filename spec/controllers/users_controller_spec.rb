@@ -27,30 +27,11 @@ describe UsersController, type: :controller do
 
   end
 
-  describe '#new' do
-
-    before(:each) do
-      get :new
-    end
-
-    it 'returns new user' do
-      expect(assigns(:user)).to be_a_new(User)
-    end
-
-    it 'renders new' do
-      expect(response).to render_template(:new)
-    end
-
-    it 'returns status 200' do
-      expect(response).to have_http_status(200)
-    end
-
-  end
-
   describe '#show' do
+    let!(:user) { create :user }
 
     before(:each) do
-      get :show, params: {id: User.first.id}
+      get :show, params: {id: user}
     end
 
     it 'returns status 200' do
@@ -62,7 +43,7 @@ describe UsersController, type: :controller do
     end
 
     it 'returns user object' do
-      expect(assigns(:user)).to eq(User.first)
+      expect(assigns(:user)).to eq(user)
     end
   end
 end

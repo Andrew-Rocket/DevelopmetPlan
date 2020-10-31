@@ -3,7 +3,7 @@ class DepartmentsController < ApplicationController
   before_action :find_dep, only: [:show, :edit, :update, :destroy]
 
   def show
-    #  @department = Department.find(params[:id])
+
   end
 
   def index
@@ -26,11 +26,10 @@ class DepartmentsController < ApplicationController
   end
 
   def edit
-    #   @department = Department.find(params[:id])
+
   end
 
   def update
-    #  @department = Department.find(params[:id])
 
     if @department.update(dep_params)
       redirect_to @department
@@ -40,7 +39,7 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    #   @department = Department.find(params[:id])
+
     @department.destroy
     redirect_to departments_path
   end
