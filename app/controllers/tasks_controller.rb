@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   def update
 
     if @task.update(task_params)
-      redirect_to @task
+      redirect_to @task.flow_step.plan
     else
       render 'edit'
     end

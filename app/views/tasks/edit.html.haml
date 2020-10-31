@@ -1,21 +1,20 @@
 %h3 Editing
 = form_with model: @task, url: task_path, method: :put do |f|
-  %p
-    Title
-    %br/
+  .field
+    = f.label :label
     = f.text_field(:title, class: 'form-control')
   .field
     = f.label :description
     = f.rich_text_area(:description)
-  %p
+  .field
     = f.label :flow_step_id
     = f.select :flow_step_id, @task.flow_step.plan.flow_steps.collect { |flow| [flow.title, flow.id]}, {}, {class: 'form-control'}
-  %p
+  .field
     = f.label :level
     = f.select :level, User.levels.keys, {}, {class: 'form-control'}
-  %p
+  .actions
     = f.submit(class: 'btn btn-success')
-    = button_to 'Delete Task', task_path(@task), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
+= button_to 'Delete Task', task_path(@task), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
 
 - @task.comments.each do |c|
   = c.body

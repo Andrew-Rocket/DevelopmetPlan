@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    'index'
+    @plans = current_user.department.plans
   end
 end

@@ -1,11 +1,12 @@
 %div{:style => "text-align: center;"}
   %h2= @plan.title
-  = form_for(:flow_step, url: plan_flow_steps_path(plan_id: @plan.id)) do |f|
-    %p
-      = f.text_field(:title, {:class => 'form-control'})
-    %p
-      = f.submit("Add flow step", {:class => 'btn btn-success'})
-      = link_to "Get PDF to email", plan_pdf_path(@plan), class: "btn btn-primary", data: {confirm: "Are you sure?"} if current_user.admin?
+  -if current_user.admin?
+    = form_for(:flow_step, url: plan_flow_steps_path(plan_id: @plan.id)) do |f|
+      %p
+        = f.text_field(:title, {:class => 'form-control'})
+      %p
+        = f.submit("Add flow step", {:class => 'btn btn-success'})
+        = link_to "Get PDF to email", plan_pdf_path(@plan), class: "btn btn-primary", data: {confirm: "Are you sure?"}
 #plan
   %section.lists-container
     - @plan.flow_steps.each do |fs|
@@ -19,7 +20,7 @@
             -elsif current_user.level == task.level
               = link_to task_path(task) do
                 %li= task.title
-
+      -if current_user.admin?
         = form_for(:task, url: flow_step_tasks_path(flow_step_id: fs.id, plan_id: @plan.id), method: :post) do |f|
           %p
             = f.text_field(:title, {:class => 'form-control'})
