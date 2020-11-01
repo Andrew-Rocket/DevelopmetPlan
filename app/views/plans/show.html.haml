@@ -20,10 +20,10 @@
             -elsif current_user.level == task.level
               = link_to task_path(task) do
                 %li= task.title
-      -if current_user.admin?
-        = form_for(:task, url: flow_step_tasks_path(flow_step_id: fs.id, plan_id: @plan.id), method: :post) do |f|
-          %p
-            = f.text_field(:title, {:class => 'form-control'})
-          %p
-            = f.submit("Add task", {:class => 'add-card-btn btn'})
+        -if current_user.admin?
+          = form_for(:task, url: flow_step_tasks_path(flow_step_id: fs.id, plan_id: @plan.id), method: :post) do |f|
+            %p
+              = f.text_field(:title, {:class => 'form-control'})
+            %p
+              = f.submit("Add task", {:class => 'add-card-btn btn'})
 

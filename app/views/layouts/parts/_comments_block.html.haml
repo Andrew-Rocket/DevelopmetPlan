@@ -1,0 +1,16 @@
+.row.d-flex.justify-content-center.mt-100.mb-100
+  .col-lg-6
+    .card
+      .card-body.text-center
+        %h4.card-title Comments
+      .comment-widgets
+      - comments.each do |c|
+        .d-flex.flex-row.comment-row.m-t-0
+          .p-2
+            = image_tag((c.user.avatar), class: 'rounded-circle', alt: 'Avatar', :width => "50") if c.user.avatar.attached?
+          .comment-text.w-100
+            %h6.font-medium
+              =c.user.first_name
+            %span.m-b-15.d-block
+              =c.body
+            %hr/

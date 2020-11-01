@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class UserPolicy < ApplicationPolicy
   def index?
@@ -19,6 +20,4 @@ class UserPolicy < ApplicationPolicy
   end
 
   alias create? new?
-
-
 end

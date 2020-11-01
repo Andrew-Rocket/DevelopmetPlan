@@ -1,5 +1,6 @@
-class TaskPolicy < ApplicationPolicy
+# frozen_string_literal: true
 
+class TaskPolicy < ApplicationPolicy
   def create?
     user.admin?
   end
@@ -16,9 +17,7 @@ class TaskPolicy < ApplicationPolicy
     true
   end
 
-
   def destroy?
     user.admin?
   end
-
 end

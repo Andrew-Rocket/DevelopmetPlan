@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :tasks do
     resources :task_states
+    resources :comments
   end
 
   devise_for :users, controllers: { invitations: 'users/invitations' }

@@ -7,8 +7,8 @@
     %strong= plan.title
     .outer
       .inner
-        = link_to 'Open', department_plan_path(plan), :class => 'btn btn-primary'
+        = link_to 'Open', department_plan_path(id: plan.id, department_id: @department.id), :class => 'btn btn-primary'
       .inner
-        = button_to 'Delete', department_plan_path(plan), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
+        = button_to 'Delete', department_plan_path(id: plan.id, department_id: @department.id), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger'
       .inner
-        = link_to 'Edit', edit_department_plan_path(plan), :class => 'btn btn-warning'
+        = link_to 'Edit', edit_department_plan_path(id: plan.id, department_id: @department.id), :class => 'btn btn-warning'

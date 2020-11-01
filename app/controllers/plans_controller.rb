@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 class PlansController < ApplicationController
   before_action :authorize_record
-  before_action :find_plan, only: [:show, :edit, :update, :destroy, :export_as_pdf]
+  before_action :find_plan, only: %i[show edit update destroy export_as_pdf]
 
   def show
 
@@ -24,13 +25,9 @@ class PlansController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-
-
     if @plan.update(plan_params)
       redirect_to @plan
     else
@@ -39,8 +36,8 @@ class PlansController < ApplicationController
   end
 
   def destroy
+    redirect_to @plan.department
     @plan.destroy
-    puts('asdsa')
   end
 
   def export_as_pdf
@@ -61,5 +58,4 @@ class PlansController < ApplicationController
   def find_plan
     @plan = Plan.find(params[:id])
   end
-
 end

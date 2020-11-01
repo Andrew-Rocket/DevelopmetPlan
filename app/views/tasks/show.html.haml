@@ -8,5 +8,16 @@
     %br
     = f.submit("Save", class: 'btn btn-success')
 
-- @task.comments.each do |c|
-  = c.body
+= form_for(:comment, url: task_comments_path(@task), method: :post) do |f|
+  .field
+    = f.text_field(:body, {:class => 'form-control'})
+  .actions
+    %br/
+    = f.submit("Add comment", {:class => 'btn btn-success'})
+
+
+= render partial: 'layouts/parts/comments_block', locals: { comments: @task.comments }
+
+
+
+

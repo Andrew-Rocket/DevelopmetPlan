@@ -1,26 +1,13 @@
-class Users::InvitationsController < Devise::InvitationsController
-  before_action :authorize_user
+# frozen_string_literal: true
 
-  def new
-    super
-  end
+module Users
+  class InvitationsController < Devise::InvitationsController
+    before_action :authorize_user
 
-  def create
-    super
-  end
+    private
 
-  def edit
-    super
-  end
-
-  def update
-    super
-  end
-
-  private
-
-  def authorize_user
-    authorize User
+    def authorize_user
+      authorize User
+    end
   end
 end
-

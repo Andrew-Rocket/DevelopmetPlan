@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe UsersController, type: :controller do
-
   before(:each) do
-    sign_in(create :user)
+    sign_in(create(:user))
   end
 
   describe '#index' do
@@ -24,14 +25,13 @@ describe UsersController, type: :controller do
     it 'returns status 200' do
       expect(response).to have_http_status(200)
     end
-
   end
 
   describe '#show' do
     let!(:user) { create :user }
 
     before(:each) do
-      get :show, params: {id: user}
+      get :show, params: { id: user }
     end
 
     it 'returns status 200' do
@@ -47,5 +47,3 @@ describe UsersController, type: :controller do
     end
   end
 end
-
-

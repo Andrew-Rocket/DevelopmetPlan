@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include SharedScopes
 
@@ -7,17 +9,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :invitable
 
   enum role: {
-      member: 0,
-      admin: 1
+    member: 0,
+    admin: 1
   }
 
   enum level: {
-      trainee: 0,
-      junior: 1,
-      middle: 5,
-      senior: 10
+    trainee: 0,
+    junior: 1,
+    middle: 5,
+    senior: 10
   }
 
+  validates :first_name, presence: true
   validates :last_name, presence: true
 
   belongs_to :department
@@ -27,5 +30,4 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   scope :with_first_name, -> { where.not(first_name: [nil, '']) }
-
 end

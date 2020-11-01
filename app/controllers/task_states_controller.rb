@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TaskStatesController < ApplicationController
-  before_action :find_state, only: [ :update]
+  before_action :find_state, only: [:update]
 
   def update
     authorize @state
@@ -14,12 +16,10 @@ class TaskStatesController < ApplicationController
   private
 
   def state_params
-    params.require(:task_state).permit(:state, :task_id, :id )
+    params.require(:task_state).permit(:state, :task_id, :id)
   end
 
   def find_state
     @state = TaskState.find(params[:id])
   end
-
 end
-

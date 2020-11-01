@@ -1,14 +1,14 @@
-class TasksController < ApplicationController
+# frozen_string_literal: true
 
+class TasksController < ApplicationController
   before_action :authorize_record
-  before_action :find_task, only: [:edit, :update, :show, :destroy]
+  before_action :find_task, only: %i[edit update show destroy]
 
   def new
     @flow_step = FlowStep.new
   end
 
   def create
-
     @flow_step = FlowStep.find(params[:flow_step_id])
 
     if @flow_step.tasks.create(task_params)
@@ -23,7 +23,6 @@ class TasksController < ApplicationController
   end
 
   def update
-
     if @task.update(task_params)
       redirect_to @task.flow_step.plan
     else
@@ -32,11 +31,12 @@ class TasksController < ApplicationController
   end
 
   def show
-    if(@state = TaskState.where(user_id: current_user.id, task_id: @task.id).first)
+    if (@state = TaskState.where(user_id: current_user.id, task_id: @task.id).first)
       @state
     else
       @state = TaskState.create(user_id: current_user.id, task_id: @task.id)
     end
+    @comment = Comment.new
   end
 
   def destroy
@@ -57,6 +57,4 @@ class TasksController < ApplicationController
   def find_task
     @task = Task.find(params[:id])
   end
-
-
 end

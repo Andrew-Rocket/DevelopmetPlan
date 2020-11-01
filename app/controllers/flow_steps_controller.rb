@@ -1,15 +1,16 @@
+# frozen_string_literal: true
+
 class FlowStepsController < ApplicationController
   before_action :authorize_record
-  before_action :find_flow_step, only: [ :edit, :update, :destroy]
+  before_action :find_flow_step, only: %i[edit update destroy]
 
   def create
-    # @flow_step = FlowStep.new(flow_step_params)
     @plan = Plan.find(params[:plan_id])
 
     if @plan.flow_steps.create(flow_step_params)
-      #redirect_to @plan
+       redirect_to @plan
     else
-      #render @plan
+      render @plan
     end
   end
 
@@ -42,5 +43,4 @@ class FlowStepsController < ApplicationController
   def find_flow_step
     @flow_step = FlowStep.find(params[:id])
   end
-
 end

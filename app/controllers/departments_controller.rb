@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class DepartmentsController < ApplicationController
   before_action :authorize_record
-  before_action :find_dep, only: [:show, :edit, :update, :destroy]
+  before_action :find_dep, only: %i[show edit update destroy]
 
   def show
-
   end
 
   def index
@@ -15,8 +16,7 @@ class DepartmentsController < ApplicationController
   end
 
   def create
-
-      @department = Department.new(dep_params)
+    @department = Department.new(dep_params)
 
     if @department.save
       redirect_to @department
@@ -25,12 +25,9 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-
     if @department.update(dep_params)
       redirect_to @department
     else
@@ -39,7 +36,6 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-
     @department.destroy
     redirect_to departments_path
   end
@@ -51,11 +47,10 @@ class DepartmentsController < ApplicationController
   end
 
   def authorize_record
-    authorize Department.new
+    authorize Department
   end
 
   def find_dep
     @department = Department.find(params[:id])
   end
-
 end

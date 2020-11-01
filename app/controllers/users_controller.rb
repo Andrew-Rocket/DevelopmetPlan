@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :authorize_current_user, :get_current_user, only: [:edit, :update]
+  before_action :authorize_current_user, :get_current_user, only: %i[edit update]
 
   def index
     authorize User
@@ -22,7 +24,6 @@ class UsersController < ApplicationController
   def get_current_user
     @user = User.find(params[:id])
   end
-
 
   def authorize_current_user
     @user = User.find(params[:id])
