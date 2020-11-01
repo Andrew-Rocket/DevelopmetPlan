@@ -8,27 +8,11 @@ class FlowStepsController < ApplicationController
     @plan = Plan.find(params[:plan_id])
 
     if @plan.flow_steps.create(flow_step_params)
-       redirect_to @plan
+      redirect_to @plan
     else
       render @plan
     end
   end
-
-  # def update
-  #   #  @department = Department.find(params[:id])
-  #
-  #   if @department.update(dep_params)
-  #     redirect_to @department
-  #   else
-  #     render 'edit'
-  #   end
-  # end
-  #
-  # def destroy
-  #   #   @department = Department.find(params[:id])
-  #   @department.destroy
-  #   redirect_to departments_path
-  # end
 
   private
 

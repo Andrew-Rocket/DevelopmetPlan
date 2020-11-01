@@ -7,10 +7,5 @@ class Task < ApplicationRecord
 
   has_rich_text :description
 
-  enum level: {
-    trainee: 0,
-    junior: 1,
-    middle: 5,
-    senior: 10
-  }
+  enum level: User.levels
 end
