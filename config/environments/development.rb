@@ -34,6 +34,7 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = { address: '127.0.0.1', port: 1025 }
   # config.action_mailer.raise_delivery_errors = false
+  config.require_master_key = true
 
   #Mailer
   config.action_mailer.delivery_method = :smtp
@@ -43,8 +44,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
-      :user_name            => Rails.application.credentials.gmail_login,
-      :password             => Rails.application.credentials.gmail_password,
+      # :user_name            => Rails.application.credentials.gmail[:login],
+      # :password             => Rails.application.credentials.gmail[:password],
+      :user_name            => "andriytempmail@gmail.com",
+      :password             => "123123Aa!?",
       :authentication       => "plain",
       :enable_starttls_auto => true
   }

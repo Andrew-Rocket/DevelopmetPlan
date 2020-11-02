@@ -55,6 +55,8 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
 
+
+  config.require_master_key = true
   #Mailer
   config.action_mailer.delivery_method = :smtp
   host = 'example.com'
@@ -64,8 +66,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
-      :user_name            => Rails.application.credentials.gmail_login,
-      :password             => Rails.application.credentials.gmail_password,
+      :user_name            => Rails.application.credentials.gmail[:login],
+      :password             => Rails.application.credentials.gmail[:password],
       :authentication       => "plain",
       :enable_starttls_auto => true
   }

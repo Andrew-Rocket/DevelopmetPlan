@@ -9,7 +9,7 @@ class Export::Pdf::Generate < ApplicationService
 
   private
 
-  def generate_pdf
+  def generate_plan_pdf
     WickedPdf.new.pdf_from_string(
         ActionController::Base.new.render_to_string('pdf/plan.html.haml', layout: 'pdf.html.haml', locals: {plan: plan})
     )
