@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   def create
     @task = Task.find(params[:task_id])
     @comment = @task.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @comment.user_id= current_user.id
 
     flash[:notice] = 'Something went wrong' unless @comment.save
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class DepartmentsController < ApplicationController
-  before_action :authorize_record
+  before_action :authorize_record, except: [:destroy]
   before_action :find_dep, only: %i[show edit update destroy]
 
   def show
@@ -25,7 +25,8 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @department.update(dep_params)
@@ -36,6 +37,7 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
+    authorize @department
     @department.destroy
     redirect_to departments_path
   end
